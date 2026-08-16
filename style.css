@@ -1,0 +1,3230 @@
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+}
+
+
+body {
+
+    background: #080308;
+
+    color: white;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+}
+
+
+/* =========================================================
+   CANVAS
+========================================================= */
+
+#particleCanvas {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    z-index: 50000;
+}
+
+
+/* =========================================================
+   SCREEN 1
+========================================================= */
+
+.screen-one {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(126, 26, 62, .35),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 10% 90%,
+            rgba(168, 28, 70, .18),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 90% 90%,
+            rgba(168, 28, 70, .18),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            145deg,
+            #060206,
+            #17050e,
+            #080308
+        );
+
+    z-index: 10;
+
+    transition:
+        opacity 1.2s
+        cubic-bezier(.16,.84,.24,1),
+
+        transform 1.5s
+        cubic-bezier(.16,.84,.24,1);
+}
+
+
+.screen-one.exit {
+
+    opacity: 0;
+
+    transform:
+        scale(1.08);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   AMBIENT
+========================================================= */
+
+.ambient {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(100px);
+
+    pointer-events: none;
+}
+
+
+.ambient-1 {
+
+    width: 420px;
+    height: 420px;
+
+    left: -180px;
+    bottom: -180px;
+
+    background:
+        rgba(201, 34, 82, .25);
+}
+
+
+.ambient-2 {
+
+    width: 400px;
+    height: 400px;
+
+    right: -180px;
+    bottom: -160px;
+
+    background:
+        rgba(193, 30, 78, .22);
+}
+
+
+.ambient-3 {
+
+    width: 500px;
+    height: 500px;
+
+    left: 50%;
+    top: 35%;
+
+    transform:
+        translate(-50%, -50%);
+
+    background:
+        rgba(148, 23, 62, .09);
+}
+
+
+/* =========================================================
+   STARS
+========================================================= */
+
+.stars,
+.memory-stars,
+.letter-stars {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+}
+
+
+.star,
+.letter-star {
+
+    position: absolute;
+
+    width: 2px;
+    height: 2px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        0 0 8px
+        rgba(255,210,225,.9);
+
+    animation:
+        starBlink
+        3s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes starBlink {
+
+    0%,
+    100% {
+        opacity: .15;
+        transform: scale(.7);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+}
+
+
+/* =========================================================
+   MOON
+========================================================= */
+
+.moon {
+
+    position: absolute;
+
+    top: 7%;
+    right: 10%;
+
+    width: 70px;
+    height: 70px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fff,
+            #e8d0d8 65%,
+            #ad8998
+        );
+
+    box-shadow:
+        0 0 35px
+        rgba(255,220,230,.3);
+
+    opacity: .75;
+
+    z-index: 3;
+}
+
+
+.moon-cut {
+
+    position: absolute;
+
+    width: 62px;
+    height: 62px;
+
+    top: -7px;
+    left: 18px;
+
+    border-radius: 50%;
+
+    background: #0d040a;
+}
+
+
+/* =========================================================
+   FAIRY LIGHTS
+========================================================= */
+
+.fairy {
+
+    position: absolute;
+
+    top: 7%;
+
+    display: flex;
+
+    gap: 28px;
+
+    z-index: 5;
+}
+
+
+.fairy-left {
+    left: 7%;
+}
+
+
+.fairy-right {
+    right: 7%;
+}
+
+
+.fairy i {
+
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #ffd7e3;
+
+    box-shadow:
+        0 0 10px #ffabc5,
+        0 0 20px rgba(255,100,150,.5);
+
+    animation:
+        fairyBlink
+        2.5s
+        ease-in-out
+        infinite;
+}
+
+
+.fairy i:nth-child(2) {
+    animation-delay: .4s;
+}
+
+.fairy i:nth-child(3) {
+    animation-delay: .8s;
+}
+
+.fairy i:nth-child(4) {
+    animation-delay: 1.2s;
+}
+
+.fairy i:nth-child(5) {
+    animation-delay: 1.6s;
+}
+
+
+@keyframes fairyBlink {
+
+    0%,
+    100% {
+        opacity: .3;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   REALISTIC ROSE PNG
+========================================================= */
+
+.hero-rose {
+
+    position: absolute;
+
+    bottom: -20px;
+
+    width: 240px;
+    height: 270px;
+
+    z-index: 8;
+
+    pointer-events: none;
+
+    animation:
+        roseFloat
+        6s
+        ease-in-out
+        infinite;
+}
+
+
+.rose-left {
+    left: -15px;
+}
+
+
+.rose-right {
+
+    right: -15px;
+
+    transform:
+        scaleX(-1);
+
+    animation:
+        roseFloatRight
+        7s
+        ease-in-out
+        infinite;
+}
+
+
+.hero-rose img {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    object-position:
+        bottom center;
+
+    display: block;
+
+    filter:
+
+        drop-shadow(
+            0 8px 12px
+            rgba(0,0,0,.55)
+        )
+
+        drop-shadow(
+            0 0 18px
+            rgba(229,65,105,.35)
+        );
+}
+
+
+.rose-glow {
+
+    position: absolute;
+
+    width: 130px;
+    height: 130px;
+
+    left: 30%;
+    bottom: 20%;
+
+    border-radius: 50%;
+
+    background:
+        rgba(222,46,90,.16);
+
+    filter: blur(40px);
+
+    animation:
+        roseGlow
+        4s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes roseFloat {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+
+@keyframes roseFloatRight {
+
+    0%,
+    100% {
+        transform:
+            scaleX(-1)
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            scaleX(-1)
+            translateY(-8px);
+    }
+}
+
+
+@keyframes roseGlow {
+
+    0%,
+    100% {
+        opacity: .3;
+        transform: scale(.9);
+    }
+
+    50% {
+        opacity: .8;
+        transform: scale(1.15);
+    }
+}
+
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+
+.hero-content {
+
+    position: relative;
+
+    z-index: 20;
+
+    width:
+        min(650px, 90vw);
+
+    text-align: center;
+
+    animation:
+        heroAppear
+        1.2s
+        ease
+        both;
+}
+
+
+@keyframes heroAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================================
+   BIRTHDAY LABEL
+========================================================= */
+
+.birthday-label {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 13px;
+
+    color: #d79aaa;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+}
+
+
+.birthday-label span {
+
+    color: #ec7194;
+
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.divider {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    margin: 15px auto;
+
+    width: 250px;
+}
+
+
+.divider span {
+
+    width: 90px;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(228,116,148,.55)
+        );
+}
+
+
+.divider span:last-child {
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(228,116,148,.55),
+            transparent
+        );
+}
+
+
+.divider b {
+
+    color: #e66c91;
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   HERO TITLE
+========================================================= */
+
+.hero-title {
+
+    position: relative;
+}
+
+
+.hero-title h1 {
+
+    font-size:
+        clamp(42px, 7vw, 65px);
+
+    line-height: .9;
+
+    font-weight: normal;
+
+    font-style: italic;
+
+    color: #f0d8df;
+}
+
+
+.hero-title h2 {
+
+    margin-top: 5px;
+
+    font-size:
+        clamp(60px, 10vw, 95px);
+
+    line-height: .9;
+
+    font-weight: normal;
+
+    color: #e6688e;
+
+    text-shadow:
+        0 0 30px
+        rgba(220,50,95,.25);
+}
+
+
+.hero-title > span {
+
+    position: absolute;
+
+    right: 12%;
+    bottom: 3px;
+
+    color: #e36b90;
+
+    font-size: 27px;
+
+    animation:
+        pulseHeart
+        2.5s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes pulseHeart {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+
+/* =========================================================
+   BIRTHDAY TEXT
+========================================================= */
+
+.birthday-text {
+
+    color: #c5a6b1;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+.birthday-text strong {
+
+    color: #eb7999;
+
+    font-weight: normal;
+}
+
+
+.birthday-text span {
+
+    color: #e66c91;
+}
+
+
+/* =========================================================
+   GIFT
+========================================================= */
+
+.gift {
+
+    position: relative;
+
+    width: 120px;
+    height: 100px;
+
+    margin:
+        20px auto 18px;
+
+    transition:
+        transform .8s ease;
+}
+
+
+.gift-box {
+
+    position: absolute;
+
+    inset: 0;
+}
+
+
+.gift-body {
+
+    position: absolute;
+
+    left: 10px;
+    bottom: 0;
+
+    width: 100px;
+    height: 62px;
+
+    border-radius: 5px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #65142f,
+            #bd315b,
+            #711535
+        );
+
+    box-shadow:
+        0 12px 30px
+        rgba(0,0,0,.5);
+}
+
+
+.gift-ribbon {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 0;
+    bottom: 0;
+
+    width: 14px;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        linear-gradient(
+            90deg,
+            #bd3d68,
+            #ffd2df,
+            #bd3d68
+        );
+}
+
+
+.gift-lid {
+
+    position: absolute;
+
+    left: 5px;
+    top: 22px;
+
+    width: 110px;
+    height: 21px;
+
+    border-radius: 5px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8a1d43,
+            #e55b82,
+            #751636
+        );
+
+    transform-origin:
+        left bottom;
+
+    z-index: 4;
+
+    transition:
+        transform
+        1s
+        cubic-bezier(.16,.84,.24,1);
+}
+
+
+.gift-bow {
+
+    position: absolute;
+
+    left: 50%;
+    top: 0;
+
+    width: 70px;
+    height: 40px;
+
+    transform:
+        translateX(-50%);
+
+    z-index: 10;
+
+    transition:
+        1s
+        cubic-bezier(.16,.84,.24,1);
+}
+
+
+.bow-left,
+.bow-right {
+
+    position: absolute;
+
+    top: 2px;
+
+    width: 34px;
+    height: 24px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8b183e,
+            #e45c83
+        );
+
+    border:
+        2px solid
+        rgba(255,185,205,.6);
+}
+
+
+.bow-left {
+
+    left: 0;
+
+    border-radius:
+        70% 25% 70% 30%;
+
+    transform:
+        rotate(20deg);
+}
+
+
+.bow-right {
+
+    right: 0;
+
+    border-radius:
+        25% 70% 30% 70%;
+
+    transform:
+        rotate(-20deg);
+}
+
+
+.bow-center {
+
+    position: absolute;
+
+    left: 50%;
+    top: 12px;
+
+    width: 14px;
+    height: 14px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+        #ffb5ca;
+}
+
+
+.gift.open {
+
+    transform: scale(1.12);
+}
+
+
+.gift.open .gift-lid {
+
+    transform:
+        translateY(-62px)
+        rotate(-18deg);
+}
+
+
+.gift.open .gift-bow {
+
+    transform:
+        translateX(-50%)
+        translateY(-62px)
+        rotate(-15deg);
+}
+
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.surprise-button {
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 13px;
+
+    min-width: 260px;
+
+    padding: 13px 22px;
+
+    border:
+        1px solid
+        rgba(236,125,154,.5);
+
+    border-radius: 100px;
+
+    background:
+        rgba(88,20,44,.45);
+
+    backdrop-filter:
+        blur(12px);
+
+    color: #f1d9e0;
+
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 30px
+        rgba(0,0,0,.3);
+
+    transition:
+        .3s ease;
+}
+
+
+.surprise-button:hover {
+
+    transform:
+        translateY(-3px);
+
+    background:
+        rgba(130,30,62,.6);
+
+    box-shadow:
+        0 15px 40px
+        rgba(215,50,95,.25);
+}
+
+
+.surprise-button b {
+
+    color: #ed7598;
+
+    font-size: 17px;
+}
+
+
+.special-note {
+
+    margin-top: 10px;
+
+    color: #896a76;
+
+    font-size: 10px;
+
+    font-style: italic;
+}
+
+
+.bottom-heart {
+
+    position: absolute;
+
+    bottom: 20px;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    color: #d96187;
+
+    font-size: 22px;
+
+    z-index: 10;
+}
+
+
+/* =========================================================
+   CINEMATIC TRANSITION
+========================================================= */
+
+.transition {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 40000;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #641333,
+            #0b0208 65%
+        );
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity .6s ease;
+}
+
+
+.transition.active {
+
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+.transition-glow {
+
+    position: absolute;
+
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,86,130,.5);
+
+    filter: blur(20px);
+
+    animation:
+        transitionGlow
+        1.4s
+        ease-in-out
+        infinite;
+}
+
+
+.transition-heart {
+
+    position: relative;
+
+    z-index: 2;
+
+    color: #ff8eac;
+
+    font-size: 75px;
+
+    text-shadow:
+        0 0 15px #ff5c8d,
+        0 0 50px rgba(255,70,120,.8),
+        0 0 100px rgba(255,70,120,.5);
+
+    animation:
+        transitionHeart
+        1.2s
+        cubic-bezier(.16,.84,.24,1)
+        infinite;
+}
+
+
+.transition-heart::before,
+.transition-heart::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 40px;
+    height: 40px;
+
+    border:
+        1px solid
+        rgba(255,160,190,.5);
+
+    border-radius: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    animation:
+        heartWave
+        1.5s
+        ease-out
+        infinite;
+}
+
+
+.transition-heart::after {
+
+    animation-delay:
+        .5s;
+}
+
+
+@keyframes transitionHeart {
+
+    0% {
+        transform: scale(.65);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(.65);
+    }
+}
+
+
+@keyframes transitionGlow {
+
+    0%,
+    100% {
+        transform: scale(.7);
+        opacity: .3;
+    }
+
+    50% {
+        transform: scale(2);
+        opacity: .9;
+    }
+}
+
+
+@keyframes heartWave {
+
+    from {
+        opacity: .7;
+
+        width: 40px;
+        height: 40px;
+    }
+
+    to {
+        opacity: 0;
+
+        width: 300px;
+        height: 300px;
+    }
+}
+
+
+/* =========================================================
+   SCREEN 2
+========================================================= */
+
+.screen-two {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    overflow: hidden;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(112,24,55,.32),
+            transparent 38%
+        ),
+
+        radial-gradient(
+            circle at 10% 80%,
+            rgba(190,37,83,.14),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 90% 20%,
+            rgba(190,37,83,.13),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            145deg,
+            #060206,
+            #16050e,
+            #070207
+        );
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform:
+        scale(1.08);
+
+    transition:
+
+        opacity 1.3s
+        cubic-bezier(.16,.84,.24,1),
+
+        transform 1.5s
+        cubic-bezier(.16,.84,.24,1);
+
+    z-index: 5;
+}
+
+
+.screen-two.visible {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        scale(1);
+}
+
+
+/* =========================================================
+   SCREEN 2 GLOWS
+========================================================= */
+
+.memory-glow {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(100px);
+
+    pointer-events: none;
+
+    animation:
+        memoryGlow
+        8s
+        ease-in-out
+        infinite;
+}
+
+
+.memory-glow-1 {
+
+    width: 350px;
+    height: 350px;
+
+    left: -160px;
+    bottom: -120px;
+
+    background:
+        rgba(214,43,91,.18);
+}
+
+
+.memory-glow-2 {
+
+    width: 320px;
+    height: 320px;
+
+    right: -150px;
+    top: 10%;
+
+    background:
+        rgba(205,38,85,.16);
+
+    animation-delay: 2s;
+}
+
+
+.memory-glow-3 {
+
+    width: 400px;
+    height: 400px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    background:
+        rgba(180,29,73,.07);
+
+    animation-delay: 4s;
+}
+
+
+@keyframes memoryGlow {
+
+    0%,
+    100% {
+        opacity: .35;
+    }
+
+    50% {
+        opacity: .8;
+    }
+}
+
+
+/* =========================================================
+   MEMORY HEADER
+========================================================= */
+
+.memory-header {
+
+    position: absolute;
+
+    left: 50%;
+    top: 12px;
+
+    transform:
+        translateX(-50%)
+        translateY(-25px);
+
+    width: 500px;
+    max-width: 90vw;
+
+    text-align: center;
+
+    z-index: 100;
+
+    opacity: 0;
+
+    transition:
+        opacity 1s ease .6s,
+        transform 1s
+        cubic-bezier(.16,.84,.24,1)
+        .6s;
+}
+
+
+.screen-two.visible .memory-header {
+
+    opacity: 1;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+
+.memory-header > div:first-child {
+
+    color: #c98599;
+
+    font-size: 8px;
+
+    letter-spacing: 4px;
+}
+
+
+.memory-header h2 {
+
+    margin-top: 4px;
+
+    color: #efd2dc;
+
+    font-size:
+        clamp(27px, 4vw, 40px);
+
+    font-weight: normal;
+
+    font-style: italic;
+}
+
+
+.memory-header p {
+
+    margin-top: 3px;
+
+    color: #93707d;
+
+    font-size: 8px;
+}
+
+
+.memory-divider {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    margin-top: 6px;
+}
+
+
+.memory-divider span {
+
+    width: 60px;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #cf5b7c
+        );
+}
+
+
+.memory-divider span:last-child {
+
+    background:
+        linear-gradient(
+            90deg,
+            #cf5b7c,
+            transparent
+        );
+}
+
+
+.memory-divider b {
+
+    color: #e86c91;
+
+    font-size: 8px;
+}
+
+
+/* =========================================================
+   MEMORY WALL
+========================================================= */
+
+.memory-wall {
+    position: absolute;
+
+    left: 50%;
+    top: 53.55%;
+
+    width: min(1500px, 96vw);
+
+    /* OLD: 650px */
+    height: 1010px;
+
+    transform: translate(-50%, -50%);
+
+    display: grid;
+
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+
+    column-gap: 12px;
+    row-gap: 14px;
+
+    padding: 10px;
+
+    box-sizing: border-box;
+
+    z-index: 30;
+}
+
+
+/* =========================================================
+   BIG MEMORY CARDS
+========================================================= */
+.memory-card {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    min-width: 0;
+    min-height: 0;
+
+    opacity: 0;
+
+    transform:
+        translateY(50px);
+
+    transition:
+        opacity .6s ease,
+        transform .6s ease;
+
+    cursor: pointer;
+
+    z-index: 1;
+
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    will-change: opacity, transform;
+}
+
+.memory-card.spread {
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.memory-card-inner {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fffafb,
+            #f7e2e9
+        );
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.8);
+
+    box-shadow:
+        0 12px 28px
+        rgba(0, 0, 0, 0.48),
+
+        0 0 12px
+        rgba(223, 66, 106, 0.08);
+
+    /* Prevent visual jitter */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    transform: translateZ(0);
+}
+
+/* =========================================================
+   RIBBON
+========================================================= */
+
+.card-ribbon-v {
+
+    position: relative;
+
+    top: 0;
+    bottom: 0;
+
+    left: 50%;
+
+    width: 15px;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        linear-gradient(
+            90deg,
+            #8d183f,
+            #e96088,
+            #ffd1dc,
+            #e96088,
+            #8d183f
+        );
+
+    z-index: 4;
+
+    transition:
+        opacity .7s ease;
+}
+
+
+.card-ribbon-h {
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    top: 30px;
+
+    height: 15px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #8d183f,
+            #e96088,
+            #ffd1dc,
+            #e96088,
+            #8d183f
+        );
+
+    z-index: 4;
+
+    transition:
+        opacity .7s ease;
+}
+
+
+/* =========================================================
+   BOW
+========================================================= */
+
+.card-bow {
+
+    position: absolute;
+
+    left: 50%;
+    top: 5px;
+
+    width: 55px;
+    height: 30px;
+
+    transform:
+        translateX(-50%);
+
+    z-index: 10;
+
+    transition:
+        transform 1s
+        cubic-bezier(.16,.84,.24,1),
+        opacity .6s ease;
+}
+
+
+.card-bow-left,
+.card-bow-right {
+
+    position: absolute;
+
+    top: 1px;
+
+    width: 27px;
+    height: 19px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8c173e,
+            #e96088,
+            #a71f4d
+        );
+
+    border:
+        1px solid
+        rgba(255,190,210,.6);
+}
+
+
+.card-bow-left {
+
+    left: 0;
+
+    border-radius:
+        80% 20% 70% 30%;
+
+    transform:
+        rotate(20deg);
+}
+
+
+.card-bow-right {
+
+    right: 0;
+
+    border-radius:
+        20% 80% 30% 70%;
+
+    transform:
+        rotate(-20deg);
+}
+
+
+.card-bow-center {
+
+    position: absolute;
+
+    left: 50%;
+    top: 8px;
+
+    width: 11px;
+    height: 11px;
+
+    transform:
+        translateX(-50%);
+
+    border-radius: 50%;
+
+    background:
+        #ffc3d3;
+}
+
+
+/* =========================================================
+   PHOTO
+========================================================= */
+
+.photo-frame {
+    position: absolute;
+
+    left: 50%;
+    top: 48%;
+
+    width: calc(100% - 18px);
+
+    /* IMPORTANT: increase photo height */
+    height: 89%;
+
+    padding: 10px;
+
+    transform: translate(-50%, -50%);
+
+    background: #ffffff;
+
+    border: 1px solid rgba(170, 70, 100, 0.25);
+
+    border-radius: 9px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 5px 14px rgba(40, 10, 20, 0.28);
+
+    z-index: 20;
+
+    box-sizing: border-box;
+}
+
+.photo-frame img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    border-radius: 5px;
+
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.photo-blur {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    filter:
+        blur(8px);
+
+    transform:
+        scale(1.15);
+
+    opacity: .22;
+}
+
+
+.photo {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    border-radius: 5px;
+}
+
+
+/* =========================================================
+   QUOTE
+========================================================= */
+
+.card-quote {
+    position: absolute;
+
+    left: 50%;
+    bottom: 7px;
+
+    width: calc(100% - 18px);
+
+    /* Smaller quote section */
+    min-height: 16%;
+
+    max-height: 20%;
+
+    padding: 5px 7px;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    transform: translateX(-50%);
+
+    color: #613444;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: clamp(9px, 0.72vw, 13px);
+
+    line-height: 1.15;
+
+    font-weight: 600;
+
+    font-style: italic;
+
+    background:
+        rgba(255, 249, 251, 0.98);
+
+    border:
+        1px solid
+        rgba(175, 65, 95, 0.25);
+
+    border-radius: 7px;
+
+    box-shadow:
+        0 3px 10px
+        rgba(50, 10, 25, 0.16);
+
+    z-index: 40;
+
+    overflow: hidden;
+}
+
+
+.card-quote::before {
+
+    content: "♥";
+
+    display: block;
+
+    color: #db527b;
+
+    font-size: 7px;
+
+    margin-bottom: 1px;
+}
+
+
+/* =========================================================
+   CARD OPEN
+========================================================= */
+
+.memory-card.opening {
+
+    z-index: 500;
+}
+
+
+.memory-card.opening
+.card-bow {
+
+    transform:
+        translateX(-50%)
+        translateY(-55px)
+        rotate(-17deg);
+
+    opacity: 0;
+}
+
+
+.memory-card.opened
+.photo-frame {
+
+    opacity: 1;
+
+    transform:
+        translate(-50%, -50%)
+        translateY(0)
+        scale(1);
+}
+
+
+.memory-card.opened
+.card-quote {
+
+    opacity: 1;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+
+.memory-card.opened
+.card-ribbon-v,
+.memory-card.opened
+.card-ribbon-h {
+
+    opacity: .06;
+}
+
+
+/* =========================================================
+   FLOATING HEARTS
+========================================================= */
+
+.floating-heart {
+
+    position: absolute;
+
+    color:
+        rgba(232,104,143,.45);
+
+    font-size: 12px;
+
+    animation:
+        floatingHeart
+        8s
+        ease-in-out
+        infinite;
+
+    pointer-events: none;
+}
+
+
+@keyframes floatingHeart {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0)
+            rotate(-8deg);
+
+        opacity: .15;
+    }
+
+    50% {
+
+        transform:
+            translateY(-35px)
+            rotate(8deg);
+
+        opacity: .75;
+    }
+}
+
+
+/* =========================================================
+   FINAL MEMORY MESSAGE
+========================================================= */
+
+.final-message {
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 15px;
+
+    transform:
+        translateX(-50%)
+        translateY(20px);
+
+    text-align: center;
+
+    z-index: 1000;
+
+    opacity: 0;
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+
+.final-message.visible {
+
+    opacity: 1;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+
+.final-message > span {
+
+    color: #eb6c93;
+
+    font-size: 15px;
+}
+
+
+.final-message h3 {
+
+    margin-top: 2px;
+
+    color: #efd0d9;
+
+    font-size: 15px;
+
+    font-weight: normal;
+
+    font-style: italic;
+}
+
+
+/* =========================================================
+   LETTER BUTTON
+========================================================= */
+
+.letter-button {
+
+    position: absolute;
+
+    left: 94.4%;
+    bottom: 50px;
+
+    transform:
+        translateX(-50%)
+        translateY(25px);
+
+    z-index: 3000;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    padding:
+        10px 22px;
+
+    min-width: 200px;
+
+    border:
+        1px solid
+        rgba(235,121,153,.45);
+
+    border-radius: 50px;
+
+    background:
+        rgba(82,18,43,.75);
+
+    backdrop-filter:
+        blur(12px);
+
+    color:
+        #e8cbd4;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+
+        opacity .8s ease,
+
+        transform .8s
+        cubic-bezier(.16,.84,.24,1),
+
+        background .3s ease;
+}
+
+
+.letter-button.visible {
+
+    opacity: 1;
+
+    pointer-events: auto;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+
+.letter-button:hover {
+
+    background:
+        rgba(137,31,67,.85);
+
+    box-shadow:
+        0 0 30px
+        rgba(224,73,112,.25);
+
+    transform:
+        translateX(-50%)
+        translateY(-3px);
+}
+
+
+.letter-button span {
+
+    font-size: 15px;
+}
+
+
+.letter-button b {
+
+    color: #ed7196;
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+.progress {
+
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    width: 90px;
+
+    padding: 6px;
+
+    border-radius: 8px;
+
+    background:
+        rgba(20,5,13,.65);
+
+    backdrop-filter:
+        blur(10px);
+
+    border:
+        1px solid
+        rgba(232,115,149,.15);
+
+    z-index: 2000;
+}
+
+
+#progressText {
+
+    display: block;
+
+    text-align: center;
+
+    color: #a47885;
+
+    font-size: 7px;
+
+    margin-bottom: 4px;
+}
+
+
+.progress-bar {
+
+    width: 100%;
+
+    height: 2px;
+
+    border-radius: 10px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    overflow: hidden;
+}
+
+
+#progressFill {
+
+    width: 0%;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #b93261,
+            #ed7698
+        );
+
+    transition:
+        width .3s ease;
+}
+
+
+/* =========================================================
+   REPLAY
+========================================================= */
+
+.replay {
+
+    position: absolute;
+
+    left: 15px;
+    bottom: 12px;
+
+    width: 32px;
+    height: 32px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(230,110,145,.3);
+
+    background:
+        rgba(80,15,40,.4);
+
+    color: #dcaebb;
+
+    cursor: pointer;
+
+    z-index: 2000;
+
+    transition: .3s ease;
+}
+
+
+.replay:hover {
+
+    transform:
+        rotate(-180deg);
+
+    background:
+        rgba(135,30,65,.6);
+}
+
+
+/* =========================================================
+   LIGHTBOX
+========================================================= */
+
+.lightbox {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 60000;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+
+    gap: 15px;
+
+    padding: 30px;
+
+    background:
+        rgba(5,1,5,.94);
+
+    backdrop-filter:
+        blur(15px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: .4s ease;
+}
+
+
+.lightbox.show {
+
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+.lightbox img {
+
+    max-width: 85vw;
+    max-height: 75vh;
+
+    object-fit: contain;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 20px 80px
+        rgba(0,0,0,.7);
+}
+
+
+.lightbox p {
+
+    max-width: 500px;
+
+    text-align: center;
+
+    color: #e5c4ce;
+
+    font-style: italic;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+
+#closeLightbox {
+
+    position: absolute;
+
+    top: 20px;
+    right: 25px;
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    background:
+        rgba(255,255,255,.08);
+
+    color: white;
+
+    font-size: 25px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   SCREEN 3 — LOVE LETTER
+========================================================= */
+
+.screen-three {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(117,24,55,.3),
+            transparent 42%
+        ),
+
+        radial-gradient(
+            circle at 10% 90%,
+            rgba(203,41,87,.18),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 90% 10%,
+            rgba(203,41,87,.16),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            145deg,
+            #050205,
+            #18050f,
+            #080308
+        );
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform:
+        scale(1.08);
+
+    transition:
+
+        opacity 1.3s
+        cubic-bezier(.16,.84,.24,1),
+
+        transform 1.5s
+        cubic-bezier(.16,.84,.24,1);
+
+    z-index: 6;
+}
+
+
+.screen-three.visible {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        scale(1);
+}
+
+
+/* =========================================================
+   LETTER GLOWS
+========================================================= */
+
+.letter-glow {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(100px);
+
+    pointer-events: none;
+
+    animation:
+        letterGlow
+        7s
+        ease-in-out
+        infinite;
+}
+
+
+.letter-glow-one {
+
+    width: 400px;
+    height: 400px;
+
+    left: -170px;
+    bottom: -160px;
+
+    background:
+        rgba(211,43,89,.2);
+}
+
+
+.letter-glow-two {
+
+    width: 350px;
+    height: 350px;
+
+    right: -150px;
+    top: -100px;
+
+    background:
+        rgba(206,39,84,.18);
+
+    animation-delay:
+        2s;
+}
+
+
+@keyframes letterGlow {
+
+    0%,
+    100% {
+        opacity: .35;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: .8;
+        transform: scale(1.15);
+    }
+}
+
+
+/* =========================================================
+   LETTER HEARTS
+========================================================= */
+
+.letter-hearts {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+}
+
+
+.letter-floating-heart {
+
+    position: absolute;
+
+    color:
+        rgba(235,106,145,.35);
+
+    font-size: 12px;
+
+    animation:
+        letterHeartFloat
+        8s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes letterHeartFloat {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0)
+            rotate(-8deg);
+
+        opacity: .1;
+    }
+
+    50% {
+
+        transform:
+            translateY(-40px)
+            rotate(8deg);
+
+        opacity: .7;
+    }
+}
+
+
+/* =========================================================
+   LETTER SCENE
+========================================================= */
+
+.letter-scene {
+
+    position: relative;
+
+    width:
+        min(720px, 90vw);
+
+    height:
+        min(92vh, 800px);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    z-index: 20;
+}
+
+
+/* =========================================================
+   LETTER PAPER
+========================================================= */
+
+.love-letter {
+
+    position: relative;
+
+    width:
+        min(650px, 90vw);
+
+    height:
+        min(88vh, 780px);
+
+    padding:
+        38px 55px 35px;
+
+    overflow-y: auto;
+
+    background:
+
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(255,255,255,.85),
+            transparent 20%
+        ),
+
+        linear-gradient(
+            135deg,
+            #fffaf8,
+            #f8e8ec
+        );
+
+    color: #633d4b;
+
+    border-radius:
+        4px 4px 7px 5px;
+
+    box-shadow:
+
+        0 30px 80px
+        rgba(0,0,0,.6),
+
+        0 0 50px
+        rgba(220,70,110,.12);
+
+    transform:
+
+        translateY(40px)
+        rotateX(8deg)
+        scale(.94);
+
+    opacity: 0;
+
+    transition:
+
+        transform 1.4s
+        cubic-bezier(.16,.84,.24,1),
+
+        opacity 1s ease;
+}
+
+
+.love-letter.open {
+
+    opacity: 1;
+
+    transform:
+
+        translateY(0)
+        rotateX(0)
+        scale(1);
+}
+
+
+.love-letter::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 8px;
+
+    border:
+        1px solid
+        rgba(166,82,105,.18);
+
+    pointer-events: none;
+
+    border-radius: 2px;
+}
+
+
+/* =========================================================
+   LETTER TOP
+========================================================= */
+
+.letter-top {
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 12px;
+
+    color: #bd5978;
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 14px;
+}
+
+
+.letter-top span {
+
+    color: #db557d;
+
+    font-size: 11px;
+}
+
+
+.love-letter h1 {
+
+    text-align: center;
+
+    color: #7c3e52;
+
+    font-size:
+        clamp(30px, 4vw, 42px);
+
+    font-weight: normal;
+
+    font-style: italic;
+}
+
+
+/* =========================================================
+   LETTER DIVIDER
+========================================================= */
+
+.letter-divider {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    margin:
+        11px
+        auto
+        18px;
+}
+
+
+.letter-divider span {
+
+    width: 80px;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #d48a9e
+        );
+}
+
+
+.letter-divider span:last-child {
+
+    background:
+        linear-gradient(
+            90deg,
+            #d48a9e,
+            transparent
+        );
+}
+
+
+.letter-divider b {
+
+    color: #cf5a7d;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   LETTER CONTENT
+========================================================= */
+
+.letter-content {
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(11px, 1.15vw, 14px);
+
+    line-height:
+        1.55;
+
+    color:
+        #684653;
+}
+
+
+.letter-content p {
+
+    margin-bottom:
+        10px;
+}
+
+
+.letter-content p:first-child {
+
+    font-style: italic;
+
+    color: #8c5367;
+}
+
+
+/* =========================================================
+   HIGHLIGHTS
+========================================================= */
+
+.letter-highlight {
+
+    text-align: center;
+
+    margin:
+        17px 0;
+
+    color:
+        #bd456b;
+
+    font-size:
+        17px;
+
+    font-style: italic;
+
+    text-shadow:
+        0 0 15px
+        rgba(204,65,105,.1);
+}
+
+
+.letter-highlight.second {
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   SIGNATURE
+========================================================= */
+
+.letter-signature {
+
+    margin-top: 15px;
+
+    text-align: right;
+
+    color: #825063;
+
+    font-size: 12px;
+
+    font-style: italic;
+}
+
+
+.letter-signature strong {
+
+    display: block;
+
+    margin-top: 4px;
+
+    color: #bd456c;
+
+    font-size: 20px;
+
+    font-weight: normal;
+
+    font-style: italic;
+}
+
+
+.letter-bottom-heart {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 8px;
+
+    transform:
+        translateX(-50%);
+
+    color: #d4597d;
+
+    font-size: 18px;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.back-memories {
+
+    position: absolute;
+
+    left: 18px;
+    bottom: 18px;
+
+    z-index: 100;
+
+    padding:
+        8px 15px;
+
+    border:
+        1px solid
+        rgba(225,110,144,.25);
+
+    border-radius: 30px;
+
+    background:
+        rgba(70,15,36,.5);
+
+    color:
+        #c89daa;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    backdrop-filter:
+        blur(10px);
+
+    transition:
+        .3s ease;
+}
+
+
+.back-memories:hover {
+
+    background:
+        rgba(125,28,61,.65);
+
+    color: #f0d8df;
+
+    transform:
+        translateX(3px);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .hero-rose {
+
+        width: 180px;
+        height: 210px;
+    }
+
+
+    .memory-card {
+
+        width: 95px;
+        height: 125px;
+    }
+
+
+    .card-ribbon-v {
+
+        width: 10px;
+    }
+
+
+    .card-ribbon-h {
+
+        top: 21px;
+        height: 10px;
+    }
+
+
+    .card-bow {
+
+        transform:
+            translateX(-50%)
+            scale(.7);
+
+        transform-origin:
+            top center;
+    }
+
+
+    .photo-frame {
+
+        height:
+            calc(100% - 64px);
+    }
+
+
+    .card-quote {
+
+        font-size: 5px;
+    }
+
+
+    .memory-wall {
+
+        width: 100vw;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .hero-rose {
+
+        width: 125px;
+        height: 160px;
+
+        opacity: .75;
+    }
+
+
+    .hero-content {
+
+        width: 92vw;
+    }
+
+
+    .birthday-text {
+
+        font-size: 11px;
+    }
+
+
+    .birthday-text br {
+
+        display: none;
+    }
+
+
+    .memory-header {
+
+        top: 8px;
+    }
+
+
+    .memory-header h2 {
+
+        font-size: 22px;
+    }
+
+
+    .memory-header p {
+
+        font-size: 7px;
+    }
+
+
+    .memory-wall {
+
+        width: 100vw;
+
+        height: 74vh;
+    }
+
+
+    .memory-card {
+
+        width: 64px;
+        height: 88px;
+    }
+
+
+    .photo-frame {
+
+        width:
+            calc(100% - 6px);
+
+        height:
+            calc(100% - 22px);
+
+        padding: 2px;
+    }
+
+
+    .card-ribbon-v {
+
+        width: 7px;
+    }
+
+
+    .card-ribbon-h {
+
+        top: 15px;
+
+        height: 7px;
+    }
+
+
+    .card-bow {
+
+        transform:
+            translateX(-50%)
+            scale(.48);
+
+        transform-origin:
+            top center;
+    }
+
+
+    .card-quote {
+
+        font-size: 3.5px;
+    }
+
+
+    .letter-button {
+
+        bottom: 8px;
+    }
+
+
+    .love-letter {
+
+        width: 92vw;
+
+        height: 90vh;
+
+        padding:
+            28px 22px;
+    }
+
+
+    .letter-content {
+
+        font-size: 10px;
+
+        line-height: 1.5;
+    }
+
+
+    .letter-highlight {
+
+        font-size: 14px;
+    }
+
+
+    .back-memories {
+
+        bottom: 8px;
+        left: 8px;
+    }
+
+}

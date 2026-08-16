@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Happy Birthday, My Love ❤️</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     PARTICLE CANVAS
+===================================================== -->
+
+<canvas id="particleCanvas"></canvas>
+
+
+<!-- =====================================================
+     SCREEN 1
+===================================================== -->
+
+<section
+    class="screen-one"
+    id="screenOne"
+>
+
+
+    <!-- Background -->
+
+    <div class="ambient ambient-1"></div>
+
+    <div class="ambient ambient-2"></div>
+
+    <div class="ambient ambient-3"></div>
+
+
+    <!-- Stars -->
+
+    <div
+        class="stars"
+        id="stars"
+    ></div>
+
+
+    <!-- Moon -->
+
+    <div class="moon">
+
+        <div class="moon-cut"></div>
+
+    </div>
+
+
+    <!-- Fairy lights -->
+
+    <div class="fairy fairy-left">
+
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+
+    </div>
+
+
+    <div class="fairy fairy-right">
+
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+
+    </div>
+
+
+    <!-- =================================================
+         REALISTIC PNG ROSE — LEFT
+    ================================================== -->
+
+    <div class="hero-rose rose-left">
+
+        <div class="rose-glow"></div>
+
+        <img
+            src="assets/rose.png"
+            alt="Rose"
+        >
+
+    </div>
+
+
+    <!-- =================================================
+         REALISTIC PNG ROSE — RIGHT
+    ================================================== -->
+
+    <div class="hero-rose rose-right">
+
+        <div class="rose-glow"></div>
+
+        <img
+            src="assets/rose.png"
+            alt="Rose"
+        >
+
+    </div>
+
+
+    <!-- =================================================
+         MAIN CONTENT
+    ================================================== -->
+
+    <main class="hero-content">
+
+
+        <div class="birthday-label">
+
+            <span>♡</span>
+
+            HAPPY BIRTHDAY
+
+            <span>♡</span>
+
+        </div>
+
+
+        <div class="divider">
+
+            <span></span>
+
+            <b>♥</b>
+
+            <span></span>
+
+        </div>
+
+
+        <div class="hero-title">
+
+            <h1>Hey,</h1>
+
+            <h2>My Love</h2>
+
+            <span>♡</span>
+
+        </div>
+
+
+        <div class="divider">
+
+            <span></span>
+
+            <b>♡</b>
+
+            <span></span>
+
+        </div>
+
+
+        <div class="birthday-text">
+
+            <p>
+                Today is all about
+                <strong>you.</strong>
+            </p>
+
+            <p>
+                The most beautiful person,
+                with the kindest heart,
+                <br>
+                who makes my world so much better.
+            </p>
+
+            <p>
+                I'm so lucky to have you.
+                <span>♥</span>
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             GIFT
+        ================================================== -->
+
+        <div
+            class="gift"
+            id="gift"
+        >
+
+            <div class="gift-box">
+
+                <div class="gift-body">
+
+                    <div class="gift-ribbon"></div>
+
+                </div>
+
+                <div class="gift-lid">
+
+                    <div class="gift-ribbon"></div>
+
+                </div>
+
+
+                <div class="gift-bow">
+
+                    <span class="bow-left"></span>
+
+                    <span class="bow-right"></span>
+
+                    <span class="bow-center"></span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             SURPRISE BUTTON
+        ================================================== -->
+
+        <button
+            class="surprise-button"
+            id="surpriseButton"
+        >
+
+            <span>🎁</span>
+
+            OPEN YOUR SURPRISE
+
+            <b>→</b>
+
+        </button>
+
+
+        <p class="special-note">
+            Something special awaits you... ♡
+        </p>
+
+
+    </main>
+
+
+    <div class="bottom-heart">
+        ♡
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     CINEMATIC TRANSITION
+===================================================== -->
+
+<div
+    class="transition"
+    id="transition"
+>
+
+    <div class="transition-glow"></div>
+
+    <div class="transition-heart">
+        ♥
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     SCREEN 2 — MEMORIES
+===================================================== -->
+
+<section
+    class="screen-two"
+    id="screenTwo"
+>
+
+
+    <!-- Background glow -->
+
+    <div class="memory-glow memory-glow-1"></div>
+
+    <div class="memory-glow memory-glow-2"></div>
+
+    <div class="memory-glow memory-glow-3"></div>
+
+
+    <!-- Stars -->
+
+    <div
+        class="memory-stars"
+        id="memoryStars"
+    ></div>
+
+
+    <!-- Floating hearts -->
+
+    <div
+        class="memory-hearts"
+        id="memoryHearts"
+    ></div>
+
+
+    <!-- =================================================
+         HEADER
+    ================================================== -->
+
+    <header class="memory-header">
+
+        <div>
+            A LITTLE COLLECTION OF
+        </div>
+
+        <h2>
+            Beautiful Memories
+        </h2>
+
+        <p>
+            Every picture holds a little piece of
+            happiness, laughter and love.
+        </p>
+
+        <div class="memory-divider">
+
+            <span></span>
+
+            <b>♥</b>
+
+            <span></span>
+
+        </div>
+
+    </header>
+
+
+    <!-- =================================================
+         MEMORY WALL
+    ================================================== -->
+
+    <div
+        class="memory-wall"
+        id="memoryWall"
+    ></div>
+
+
+    <!-- =================================================
+         FINAL MESSAGE
+    ================================================== -->
+
+    <div
+        class="final-message"
+        id="finalMessage"
+    >
+
+        <span>♥</span>
+
+        <h3>
+            Every picture has a little piece of you.
+        </h3>
+
+    </div>
+
+
+    <!-- =================================================
+         LETTER BUTTON
+    ================================================== -->
+
+    <button
+        class="letter-button"
+        id="letterButton"
+    >
+
+        <span>💌</span>
+
+        READ MY LETTER
+
+        <b>→</b>
+
+    </button>
+
+
+    <!-- =================================================
+         PROGRESS
+    ================================================== -->
+
+    <div class="progress">
+
+        <span id="progressText">
+            0 / 23
+        </span>
+
+        <div class="progress-bar">
+
+            <div
+                id="progressFill"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Replay -->
+
+    <button
+        class="replay"
+        id="replay"
+    >
+        ↻
+    </button>
+
+
+    <!-- =================================================
+         LIGHTBOX
+    ================================================== -->
+
+    <div
+        class="lightbox"
+        id="lightbox"
+    >
+
+        <button
+            id="closeLightbox"
+        >
+            ×
+        </button>
+
+        <img
+            id="lightboxImage"
+            src=""
+            alt=""
+        >
+
+        <p
+            id="lightboxQuote"
+        ></p>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     SCREEN 3 — LOVE LETTER
+===================================================== -->
+
+<section
+    class="screen-three"
+    id="screenThree"
+>
+
+
+    <!-- Background -->
+
+    <div class="letter-glow letter-glow-one"></div>
+
+    <div class="letter-glow letter-glow-two"></div>
+
+
+    <!-- Stars -->
+
+    <div
+        class="letter-stars"
+        id="letterStars"
+    ></div>
+
+
+    <!-- Hearts -->
+
+    <div
+        class="letter-hearts"
+        id="letterHearts"
+    ></div>
+
+
+    <!-- =================================================
+         LETTER SCENE
+    ================================================== -->
+
+    <div class="letter-scene">
+
+
+        <article class="love-letter">
+
+
+            <div class="letter-top">
+
+                <span>♥</span>
+
+                <p>
+                    A LETTER FOR YOU
+                </p>
+
+                <span>♥</span>
+
+            </div>
+
+
+            <h1>
+                To My Love,
+            </h1>
+
+
+            <div class="letter-divider">
+
+                <span></span>
+
+                <b>♡</b>
+
+                <span></span>
+
+            </div>
+
+
+            <div class="letter-content">
+
+
+                <p>
+                    My love,
+                </p>
+
+
+                <p>
+                    Today is your birthday, but somehow
+                    I feel like I'm the lucky one.
+                    Because getting to know you,
+                    getting to see your smile and getting
+                    to share even the smallest moments
+                    with you has become something
+                    incredibly precious to me.
+                </p>
+
+
+                <p>
+                    There are so many things I could say
+                    about you, but words somehow never
+                    seem enough.
+                </p>
+
+
+                <p>
+                    You have this beautiful way of making
+                    ordinary moments feel special.
+                    A simple conversation can become a
+                    memory. A small smile can change an
+                    entire day. And somehow, just knowing
+                    that you're there makes the world feel
+                    a little warmer.
+                </p>
+
+
+                <p>
+                    Looking at all these pictures reminded
+                    me of something beautiful:
+                    happiness isn't always found in huge
+                    moments.
+                </p>
+
+
+                <p>
+                    Sometimes it is hidden inside a smile,
+                    a silly expression, an unexpected
+                    moment, a shared laugh or simply
+                    being together.
+                </p>
+
+
+                <p>
+                    And those are the moments I want to
+                    remember.
+                </p>
+
+
+                <p>
+                    On your birthday, I wish you a year
+                    filled with everything your heart
+                    deserves.
+                </p>
+
+
+                <p>
+                    I hope you laugh more.
+                    I hope you dream bigger.
+                    I hope you discover new places,
+                    experience beautiful things and
+                    become even more proud of the person
+                    you are becoming.
+                </p>
+
+
+                <p>
+                    And selfishly...
+                    I hope I get to be there for many
+                    of those moments.
+                </p>
+
+
+                <p>
+                    Thank you for being you.
+                    Thank you for every smile, every
+                    memory and every little moment that
+                    somehow became important to me.
+                </p>
+
+
+                <p class="letter-highlight">
+                    You are deeply loved.
+                </p>
+
+
+                <p>
+                    So today, forget about everything else
+                    for a moment and remember just this:
+                </p>
+
+
+                <p class="letter-highlight second">
+                    You deserve all the happiness
+                    in the world.
+                </p>
+
+
+                <p>
+                    Happy Birthday, beautiful.
+                </p>
+
+
+                <p>
+                    Here's to you.
+                    Here's to us.
+                    And here's to all the beautiful
+                    memories that are still waiting for us.
+                </p>
+
+
+            </div>
+
+
+            <div class="letter-signature">
+
+                <span>
+                    With all my love,
+                </span>
+
+                <strong>
+                    Yours ♥
+                </strong>
+
+            </div>
+
+
+            <div class="letter-bottom-heart">
+                ♡
+            </div>
+
+
+        </article>
+
+
+    </div>
+
+
+    <!-- Back -->
+
+    <button
+        class="back-memories"
+        id="backMemories"
+    >
+        ← BACK TO MEMORIES
+    </button>
+
+
+</section>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
