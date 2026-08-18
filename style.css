@@ -2636,10 +2636,10 @@ body {
     position: relative;
 
     width:
-        min(720px, 90vw);
+        min(920px, 90vw);
 
     height:
-        min(92vh, 800px);
+        min(100vh, 800px);
 
     display: flex;
 
@@ -2659,10 +2659,10 @@ body {
     position: relative;
 
     width:
-        min(650px, 90vw);
+        min(900px, 120vw);
 
     height:
-        min(88vh, 780px);
+        min(150vh, 1000px);
 
     padding:
         38px 55px 35px;
